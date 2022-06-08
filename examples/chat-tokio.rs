@@ -31,8 +31,8 @@
 //! Alternatively, to run with the minimal set of features and crates:
 //!
 //! ```sh
-//!cargo run --example chat-tokio \\
-//!    --no-default-features \\
+//!cargo run --example chat-tokio \
+//!    --no-default-features \
 //!    --features="floodsub mplex noise tcp-tokio mdns"
 //! ```
 
@@ -80,7 +80,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .boxed();
 
     // Create a Floodsub topic
-    let floodsub_topic = floodsub::Topic::new("chat");
+    let floodsub_topic = floodsub::Topic::new(String::from(std::env::args().nth(2)));
 
     // We create a custom network behaviour that combines floodsub and mDNS.
     // The derive generates a delegating `NetworkBehaviour` impl which in turn
