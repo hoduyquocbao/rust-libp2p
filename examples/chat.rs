@@ -76,7 +76,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let transport = libp2p::development_transport(local_key).await?;
 
     // Create a Floodsub topic
-    let floodsub_topic = floodsub::Topic::new(String::from(std::env::args().nth(2)));
+    let floodsub_topic = floodsub::Topic::new(std::env::args().nth(2).to_string());
 
     // We create a custom network behaviour that combines floodsub and mDNS.
     // In the future, we want to improve libp2p to make this easier to do.
